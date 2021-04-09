@@ -1,0 +1,101 @@
+@startuml
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+skinparam noteBackgroundColor #eee
+skinparam noteBorderColor #ddd
+
+skinparam sequenceGroupBorderColor #ddd
+skinparam sequenceReferenceBorderColor #eee
+
+skinparam sequenceBoxBorderColor transparent
+skinparam sequenceBoxBackgroundColor LightYellow
+skinparam sequenceArrowThickness 1
+
+actor "Client" as Client
+
+box Kube Agent Gateway
+    participant "Gateway"      as  Gateway
+    participant "Gateway X"      as  GatewayX
+end box
+
+box Internal Cluster
+    control "Kube Agent"        as  KubeAgent
+    participant "Kube API Server"   as  KubeAPIServer
+end box
+
+title KubeAgent Workflow
+
+== Register Kube Agent ==
+
+|||
+
+GatewayX <- KubeAgent: register
+
+|||
+
+note right
+    **CONNECT** /agents/{agentHost}/register
+end note
+
+activate GatewayX
+activate KubeAgent
+
+== Call Internal Cluster ==
+
+|||
+
+Client -> Gateway
+note left
+    **GET** /proxies/{agentHost}/api
+end note
+
+|||
+
+group check channel of {agentHost} exists
+    |||
+    else if not exists
+        Gateway -> GatewayX
+
+        note left
+            **forward to next instance**
+
+            all instances
+            have registered by gossip protocol
+            and know each other
+        end note
+    else
+
+    GatewayX --> KubeAgent
+
+    note right
+        **notice KubeRequestID**
+
+        KubeRequestID: {uuid}@{agentHost}@{gatewayAddress}
+    end note
+
+    deactivate GatewayX
+    deactivate KubeAgent
+
+    GatewayX <- KubeAgent: create websocket connect
+
+    |||
+
+    activate GatewayX
+    activate KubeAgent
+
+    GatewayX --> KubeAgent: read http request raw
+    KubeAgent -> KubeAPIServer: GET /api
+    KubeAgent <-- KubeAPIServer: { "kind":"APIVersions" ... }
+    GatewayX <-- KubeAgent: write http response raw
+
+    deactivate GatewayX
+    deactivate KubeAgent
+
+end
+
+Client <-- GatewayX: { "kind":"APIVersions" ... }
+
+|||
+
+@enduml
