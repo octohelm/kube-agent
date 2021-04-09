@@ -1,0 +1,31 @@
+project_name: kube-agent
+dist: ./bin
+before:
+  hooks:
+    - go mod download -x
+
+builds:
+  - &_build
+
+    id: kube-agent
+    binary: kube-agent
+    dir: ./cmd/kube-agent
+
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X github.com/octohelm/kube-agent/internal/version.Version={{ .Version }}+sha.{{ .FullCommit }}
+    mod_timestamp: '{{ .CommitTimestamp }}'
+
+  - <<: *_build
+
+    id: kube-agent-gateway
+    binary: kube-agent-gateway
+    dir: ./cmd/kube-agent-gateway
