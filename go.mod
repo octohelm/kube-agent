@@ -24,7 +24,7 @@ require (
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/lestrrat-go/backoff/v2 v2.0.8 // indirect
-	github.com/lestrrat-go/jwx v1.2.0
+	github.com/lestrrat-go/jwx v1.2.2
 	github.com/miekg/dns v1.1.42 // indirect
 	github.com/onsi/gomega v1.9.0
 	github.com/pkg/errors v0.9.1
@@ -37,7 +37,6 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c // indirect
 	golang.org/x/sys v0.0.0-20210514084401-e8d321eab015 // indirect
 	golang.org/x/term v0.0.0-20210503060354-a79de5458b56 // indirect
-	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	k8s.io/api v0.21.1
 	k8s.io/apimachinery v0.21.1
