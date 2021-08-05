@@ -8,7 +8,6 @@ require (
 	github.com/go-courier/logr v0.0.2
 	github.com/go-courier/ptr v1.0.1
 	github.com/go-courier/snowflakeid v1.2.1
-	github.com/google/btree v1.0.1 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/gorilla/mux v1.8.0
@@ -24,7 +23,7 @@ require (
 	github.com/lestrrat-go/backoff/v2 v2.0.8 // indirect
 	github.com/lestrrat-go/jwx v1.2.4
 	github.com/miekg/dns v1.1.43 // indirect
-	github.com/onsi/gomega v1.9.0
+	github.com/onsi/gomega v1.10.1
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.11.0
 	github.com/prometheus/common v0.29.0 // indirect
@@ -36,12 +35,11 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210628180205-a41e5a781914 // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/term v0.0.0-20210615171337-6886f2dfbf5b // indirect
-	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
-	k8s.io/api v0.21.3
-	k8s.io/apimachinery v0.21.3
-	k8s.io/apiserver v0.21.3
-	k8s.io/client-go v0.21.3
+	k8s.io/api v0.22.0
+	k8s.io/apimachinery v0.22.0
+	k8s.io/apiserver v0.22.0
+	k8s.io/client-go v0.22.0
 	k8s.io/klog/v2 v2.10.0 // indirect
 	k8s.io/utils v0.0.0-20210722164352-7f3ee0f31471 // indirect
 )
