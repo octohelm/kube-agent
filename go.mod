@@ -21,8 +21,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/hashicorp/memberlist v0.2.4
 	github.com/imdario/mergo v0.3.12 // indirect
-	github.com/lestrrat-go/backoff/v2 v2.0.8 // indirect
-	github.com/lestrrat-go/jwx v1.2.4
+	github.com/lestrrat-go/jwx v1.2.6
 	github.com/miekg/dns v1.1.43 // indirect
 	github.com/onsi/gomega v1.9.0
 	github.com/pkg/errors v0.9.1
